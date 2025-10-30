@@ -1,0 +1,135 @@
+@startuml
+
+' ====== Alap osztály ======
+class Person {
+  - name : String
+  - age : int
+  + Person(name:String, age:int)
+  + Person()
+  + getName() : String
+  + setName(name:String) : void
+  + getAge() : int
+  + setAge(int) : void
+  + toString() : String
+}
+
+' ====== Employee és leszármazottai ======
+class Employee {
+  - workplace : String
+  - salary : int
+  + Employee(name:String, age:int, workplace:String, salary:int)
+  + Employee()
+  + getWorkplace() : String
+  + setWorkplace(String) : void
+  + getSalary() : int
+  + setSalary(int) : void
+  + toString() : String
+}
+
+class ITEmployee {
+  - position : Position
+  - project : String
+  - baseSalary : int
+  + ITEmployee(name:String, age:int, workplace:String, position:Position, project:String)
+  + ITEmployee()
+  + getProject() : String
+  + setProject(String) : void
+  + getPosition() : Position
+  + setPosition(Position) : void
+  + getBaseSalary() : int
+  + setBaseSalary(int) : void
+  + toString() : String
+}
+
+class UniEmployee {
+  - position : Position
+  - baseSalary : int
+  + UniEmployee(name:String, age:int, workplace:String, position:Position)
+  + UniEmployee()
+  + getPosition() : Position
+  + setPosition(Position) : void
+  + getBaseSalary() : int
+  + setBaseSalary(int) : void
+  + toString() : String
+}
+
+enum ITPosition {
+  INTERN
+  JUNIOR
+  MEDIOR
+  SENIOR
+  MANAGER
+}
+
+enum UniPosition {
+  PROF
+  LECTURER
+  ADMIN
+}
+
+Person <|-- Employee
+Employee <|-- ITEmployee
+Employee <|-- UniEmployee
+ITEmployee --> ITPosition
+UniEmployee --> UniPosition
+
+' ====== Factory Pattern ======
+interface EmployeeFactory {
+  + createEmployee(workplace:String) : Employee
+}
+
+class EmployeeFactoryImpl {
+  + createEmployee(workplace:String) : Employee
+}
+
+EmployeeFactory <|.. EmployeeFactoryImpl
+
+' ====== FileService + Implementáció ======
+interface FileService<T> {
+  + writeToFile(filename:String, list:List<T>) : void
+  + readFromFile(filename:String) : List<T>
+}
+
+class EmployeeFileService {
+  + writeToFile(filename:String, list:List<Employee>) : void
+  + readFromFile(filename:String) : List<Employee>
+}
+
+FileService <|.. EmployeeFileService
+EmployeeFileService --> Employee
+
+' ====== Iterator Pattern ======
+interface ListIterator<T> {
+  + getNext() : T
+  + getCurrentElement() : T
+  + hasMore() : boolean
+  + resetIterator() : void
+}
+
+class EmployeeIterator {
+  - employeeList : List<Employee>
+  - index : int
+  + EmployeeIterator(List<Employee>)
+  + getNext() : Employee
+  + getCurrentElement() : Employee
+  + hasMore() : boolean
+  + resetIterator() : void
+}
+
+ListIterator <|.. EmployeeIterator
+EmployeeIterator --> Employee
+
+' ====== Főprogram ======
+class App {
+  - uniEmployeeList : List<Employee>
+  - itEmployeeList : List<Employee>
+  + main(args:String[]) : void
+  + init() : void
+  + end() : void
+}
+
+App --> EmployeeFileService
+App --> EmployeeIterator
+App --> EmployeeFactoryImpl
+App --> Employee
+@enduml

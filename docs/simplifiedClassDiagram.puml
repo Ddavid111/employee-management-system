@@ -1,0 +1,43 @@
+@startuml
+' ====== Alap osztályok ======
+class Person
+class Employee
+class ITEmployee
+class UniEmployee
+
+' ====== Enumok ======
+enum ITPosition
+enum UniPosition
+
+' ====== Minták és implementációk ======
+interface EmployeeFactory
+class EmployeeFactoryImpl
+
+interface FileService
+class EmployeeFileService
+
+interface ListIterator
+class EmployeeIterator
+
+' ====== Főprogram ======
+class App
+
+' ====== Kapcsolatok ======
+Person <|-- Employee
+Employee <|-- ITEmployee
+Employee <|-- UniEmployee
+
+ITEmployee --> ITPosition
+UniEmployee --> UniPosition
+
+EmployeeFactory <|.. EmployeeFactoryImpl
+FileService <|.. EmployeeFileService
+ListIterator <|.. EmployeeIterator
+
+EmployeeFileService --> Employee
+EmployeeIterator --> Employee
+
+App --> EmployeeFactoryImpl
+App --> EmployeeFileService
+App --> EmployeeIterator
+@enduml

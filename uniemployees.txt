@@ -1,0 +1,5 @@
+name 1;25;BME;ADMIN
+name 2;41;ME;PROF
+name 3;61;BME;PROF
+name 4;20;ME;LECTURER
+name 5;34;BME;LECTURER
