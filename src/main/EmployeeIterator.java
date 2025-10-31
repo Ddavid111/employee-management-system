@@ -12,7 +12,7 @@ public class EmployeeIterator implements ListIterator<Employee> {
     }
 
     @Override
-    public Employee getNext() {
+    public Employee getNextElement() {
             return employeeList.get(index++);
     }
 
@@ -22,7 +22,7 @@ public class EmployeeIterator implements ListIterator<Employee> {
     }
 
     @Override
-    public boolean hasMore() {
+    public boolean hasMoreElement() {
         if(this.index < employeeList.size()) {
             return true;
         } else {

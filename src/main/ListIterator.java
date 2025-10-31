@@ -4,8 +4,8 @@ import java.util.Iterator;
 
 public interface ListIterator<T> {
 
-    T getNext();
+    T getNextElement();
     T getCurrentElement();
-    boolean hasMore();
+    boolean hasMoreElement();
     void resetIterator();
 }

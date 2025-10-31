@@ -1,15 +1,16 @@
 @startuml
-' ====== Alap osztályok ======
+
+' ====== Alap entitások ======
 class Person
 class Employee
 class ITEmployee
 class UniEmployee
 
-' ====== Enumok ======
+' ====== Enum-ok ======
 enum ITPosition
 enum UniPosition
 
-' ====== Minták és implementációk ======
+' ====== Tervezési minták ======
 interface EmployeeFactory
 class EmployeeFactoryImpl
 
@@ -31,13 +32,16 @@ ITEmployee --> ITPosition
 UniEmployee --> UniPosition
 
 EmployeeFactory <|.. EmployeeFactoryImpl
-FileService <|.. EmployeeFileService
-ListIterator <|.. EmployeeIterator
+EmployeeFactoryImpl ..> Employee
 
+FileService <|.. EmployeeFileService
 EmployeeFileService --> Employee
+
+ListIterator <|.. EmployeeIterator
 EmployeeIterator --> Employee
 
 App --> EmployeeFactoryImpl
 App --> EmployeeFileService
 App --> EmployeeIterator
+App --> Employee
 @enduml

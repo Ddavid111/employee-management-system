@@ -29,30 +29,30 @@ public class App {
         /** using iterator pattern to process lists **/
         EmployeeIterator employeeIterator = new EmployeeIterator(itEmployeeList);
         System.out.println("current element: " + employeeIterator.getCurrentElement());
-        System.out.println("next element: " + employeeIterator.getNext());
+        System.out.println("next element: " + employeeIterator.getNextElement());
         System.out.println("current element: " + employeeIterator.getCurrentElement());
-        System.out.println("has more element? " + employeeIterator.hasMore());
+        System.out.println("has more element? " + employeeIterator.hasMoreElement());
 
         // reset the iterator
         employeeIterator.resetIterator();
         System.out.println("current element after reset: " + employeeIterator.getCurrentElement());
 
-        while (employeeIterator.hasMore()) {
-            System.out.println(employeeIterator.getNext());
+        while (employeeIterator.hasMoreElement()) {
+            System.out.println(employeeIterator.getNextElement());
         }
 
         System.out.println("\n");
         EmployeeIterator employeeIterator1 = new EmployeeIterator(uniEmployeeList);
         System.out.println("current element: " + employeeIterator1.getCurrentElement());
-        System.out.println("next element: " + employeeIterator1.getNext());
+        System.out.println("next element: " + employeeIterator1.getNextElement());
         System.out.println("current element: " + employeeIterator1.getCurrentElement());
-        System.out.println("has more element? " + employeeIterator1.hasMore());
+        System.out.println("has more element? " + employeeIterator1.hasMoreElement());
 
         // reset the iterator
         employeeIterator1.resetIterator();
 
-        while (employeeIterator1.hasMore()) {
-            System.out.println(employeeIterator1.getNext());
+        while (employeeIterator1.hasMoreElement()) {
+            System.out.println(employeeIterator1.getNextElement());
         }
 
         System.out.println("\n");

@@ -1,5 +1,4 @@
 @startuml
-
 ' ====== Alap osztály ======
 class Person {
   - name : String
@@ -9,7 +8,7 @@ class Person {
   + getName() : String
   + setName(name:String) : void
   + getAge() : int
-  + setAge(int) : void
+  + setAge(age:int) : void
   + toString() : String
 }
 
@@ -20,39 +19,40 @@ class Employee {
   + Employee(name:String, age:int, workplace:String, salary:int)
   + Employee()
   + getWorkplace() : String
-  + setWorkplace(String) : void
+  + setWorkplace(workplace:String) : void
   + getSalary() : int
-  + setSalary(int) : void
+  + setSalary(salary:int) : void
   + toString() : String
 }
 
 class ITEmployee {
-  - position : Position
+  - position : ITPosition
   - project : String
   - baseSalary : int
-  + ITEmployee(name:String, age:int, workplace:String, position:Position, project:String)
+  + ITEmployee(name:String, age:int, workplace:String, position:ITPosition, project:String)
   + ITEmployee()
   + getProject() : String
-  + setProject(String) : void
-  + getPosition() : Position
-  + setPosition(Position) : void
+  + setProject(project:String) : void
+  + getPosition() : ITPosition
+  + setPosition(position:ITPosition) : void
   + getBaseSalary() : int
-  + setBaseSalary(int) : void
+  + setBaseSalary(baseSalary:int) : void
   + toString() : String
 }
 
 class UniEmployee {
-  - position : Position
+  - position : UniPosition
   - baseSalary : int
-  + UniEmployee(name:String, age:int, workplace:String, position:Position)
+  + UniEmployee(name:String, age:int, workplace:String, position:UniPosition)
   + UniEmployee()
-  + getPosition() : Position
-  + setPosition(Position) : void
+  + getPosition() : UniPosition
+  + setPosition(position:UniPosition) : void
   + getBaseSalary() : int
-  + setBaseSalary(int) : void
+  + setBaseSalary(baseSalary:int) : void
   + toString() : String
 }
 
+' ====== Enum típusok ======
 enum ITPosition {
   INTERN
   JUNIOR
@@ -83,15 +83,16 @@ class EmployeeFactoryImpl {
 }
 
 EmployeeFactory <|.. EmployeeFactoryImpl
+EmployeeFactoryImpl ..> Employee
 
 ' ====== FileService + Implementáció ======
 interface FileService<T> {
-  + writeToFile(filename:String, list:List<T>) : void
+  + writeToFile(filename:String, employees:List<T>) : void
   + readFromFile(filename:String) : List<T>
 }
 
 class EmployeeFileService {
-  + writeToFile(filename:String, list:List<Employee>) : void
+  + writeToFile(filename:String, employees:List<Employee>) : void
   + readFromFile(filename:String) : List<Employee>
 }
 
@@ -100,19 +101,19 @@ EmployeeFileService --> Employee
 
 ' ====== Iterator Pattern ======
 interface ListIterator<T> {
-  + getNext() : T
+  + getNextElement() : T
   + getCurrentElement() : T
-  + hasMore() : boolean
+  + hasMoreElement() : boolean
   + resetIterator() : void
 }
 
 class EmployeeIterator {
   - employeeList : List<Employee>
   - index : int
-  + EmployeeIterator(List<Employee>)
-  + getNext() : Employee
+  + EmployeeIterator(employeeList:List<Employee>)
+  + getNextElement() : Employee
   + getCurrentElement() : Employee
-  + hasMore() : boolean
+  + hasMoreElement() : boolean
   + resetIterator() : void
 }
 

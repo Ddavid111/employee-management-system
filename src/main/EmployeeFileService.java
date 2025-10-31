@@ -10,12 +10,12 @@ import java.util.Scanner;
 
 public class EmployeeFileService implements FileService<Employee> {
     @Override
-    public void writeToFile(String filename, List<Employee> list) {
+    public void writeToFile(String filename, List<Employee> employees) {
         try {
             File file = new File(filename);
             FileWriter fileWriter = new FileWriter(file);
 
-            for(Employee employee : list) {
+            for(Employee employee : employees) {
                 if(employee instanceof UniEmployee) {
                     fileWriter.write(employee.getName() + ";" + employee.getAge() + ";" + employee.getWorkplace() + ";" + ((UniEmployee) employee).getPosition());
                     fileWriter.write("\n");
