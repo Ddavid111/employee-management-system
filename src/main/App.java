@@ -103,16 +103,16 @@ public class App {
     }
 
     static void init() {
-        uniEmployeeList.add(new UniEmployee("name 1", 25, "BME", UniEmployee.Position.ADMIN));
-        uniEmployeeList.add(new UniEmployee("name 2", 41, "ME", UniEmployee.Position.PROF));
-        uniEmployeeList.add(new UniEmployee("name 3", 61, "BME", UniEmployee.Position.PROF));
-        uniEmployeeList.add(new UniEmployee("name 4", 20, "ME", UniEmployee.Position.LECTURER));
-        uniEmployeeList.add(new UniEmployee("name 5", 34, "BME", UniEmployee.Position.LECTURER));
+        uniEmployeeList.add(new UniEmployee("Alice Johnson", 29, "Oxford University", UniEmployee.Position.LECTURER));
+        uniEmployeeList.add(new UniEmployee("Robert Smith", 45, "University of Cambridge", UniEmployee.Position.PROF));
+        uniEmployeeList.add(new UniEmployee("Michael Brown", 53, "Harvard University", UniEmployee.Position.ADMIN));
+        uniEmployeeList.add(new UniEmployee("Emma Davis", 38, "MIT", UniEmployee.Position.LECTURER));
+        uniEmployeeList.add(new UniEmployee("Olivia Wilson", 33, "Stanford University", UniEmployee.Position.PROF));
 
-        itEmployeeList.add(new ITEmployee("name 1", 24, "evosoft", ITEmployee.Position.INTERN, "chat app"));
-        itEmployeeList.add(new ITEmployee("name 2", 27, "simplesoft", ITEmployee.Position.MEDIOR, "pocket-money"));
-
+        itEmployeeList.add(new ITEmployee("James Taylor", 25, "Evosoft", ITEmployee.Position.JUNIOR, "Online Store"));
+        itEmployeeList.add(new ITEmployee("William Miller", 42, "Simplesoft", ITEmployee.Position.MANAGER, "Payment System"));
     }
+
 
     static void end() {
         for (Employee uniEmployee: uniEmployeeList) {
