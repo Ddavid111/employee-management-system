@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class App {
-    // Used design patterns: iterator (for the lists), factory method, facade (read/write list elements from/to file)
     static List<Employee> uniEmployeeList = new ArrayList<>();
     static List<Employee> itEmployeeList = new ArrayList<>();
 
@@ -14,26 +13,21 @@ public class App {
         EmployeeFactoryImpl employeeFactory = new EmployeeFactoryImpl();
         init();
 
-        /** using facade pattern to read/write from/to file **/
         EmployeeFileService employeeFileService = new EmployeeFileService();
-        // read from file
         List<Employee> employeeList = employeeFileService.readFromFile("uniemployees.txt");
         System.out.println("Uni employees: " + employeeList);
         List<Employee> employeeList1 = employeeFileService.readFromFile("itemployees.txt");
         System.out.println("IT employees: " + employeeList1);
 
-        // write to file
         employeeFileService.writeToFile("uniemployees.txt", uniEmployeeList);
         employeeFileService.writeToFile("itemployees.txt", itEmployeeList);
 
-        /** using iterator pattern to process lists **/
         EmployeeIterator employeeIterator = new EmployeeIterator(itEmployeeList);
         System.out.println("current element: " + employeeIterator.getCurrentElement());
         System.out.println("next element: " + employeeIterator.getNextElement());
         System.out.println("current element: " + employeeIterator.getCurrentElement());
         System.out.println("has more element? " + employeeIterator.hasMoreElement());
 
-        // reset the iterator
         employeeIterator.resetIterator();
         System.out.println("current element after reset: " + employeeIterator.getCurrentElement());
 
@@ -48,7 +42,6 @@ public class App {
         System.out.println("current element: " + employeeIterator1.getCurrentElement());
         System.out.println("has more element? " + employeeIterator1.hasMoreElement());
 
-        // reset the iterator
         employeeIterator1.resetIterator();
 
         while (employeeIterator1.hasMoreElement()) {
@@ -57,7 +50,6 @@ public class App {
 
         System.out.println("\n");
 
-        /** using factory pattern to create instances **/
 
         List<Employee> employees = new ArrayList<>();
         for(int i = 0; i < 2; i++) {
@@ -122,7 +114,6 @@ public class App {
             System.out.println(itEmployee);
         }
 
-        // create statistics by uni
         int profCount = 0, lecturerCount = 0, adminCount = 0;
         for (Employee uniEmployee : uniEmployeeList) {
             if(((UniEmployee) uniEmployee).getPosition().toString().equalsIgnoreCase("PROF")) {

@@ -69,7 +69,6 @@ public class EmployeeFileService implements FileService<Employee> {
 
     @Override
     public List<Employee> readFromFile(String filename) {
-        // 🧱 Proxy-réteg: ellenőrzés olvasás előtt
         if (!validateFileAccess(filename)) {
             System.out.println("[Proxy] Read operation aborted due to invalid access.");
             return new ArrayList<>();
