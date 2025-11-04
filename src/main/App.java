@@ -13,7 +13,7 @@ public class App {
         EmployeeFactoryImpl employeeFactory = new EmployeeFactoryImpl();
         init();
 
-        EmployeeFileService employeeFileService = new EmployeeFileService();
+        FileService<Employee> employeeFileService = new FileServiceProxy(new EmployeeFileService());
         List<Employee> employeeList = employeeFileService.readFromFile("uniemployees.txt");
         System.out.println("Uni employees: " + employeeList);
         List<Employee> employeeList1 = employeeFileService.readFromFile("itemployees.txt");
@@ -35,6 +35,9 @@ public class App {
             System.out.println(employeeIterator.getNextElement());
         }
 
+        double avgITAge = employeeIterator.calculateAverageAge();
+        System.out.println("Az IT dolgozók átlagéletkora: " + avgITAge);
+
         System.out.println("\n");
         EmployeeIterator employeeIterator1 = new EmployeeIterator(uniEmployeeList);
         System.out.println("current element: " + employeeIterator1.getCurrentElement());
@@ -50,6 +53,8 @@ public class App {
 
         System.out.println("\n");
 
+        double avgUniAge = employeeIterator1.calculateAverageAge();
+        System.out.println("Az egyetemi dolgozók átlagéletkora: " + avgUniAge);
 
         List<Employee> employees = new ArrayList<>();
         for(int i = 0; i < 2; i++) {

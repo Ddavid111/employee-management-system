@@ -34,4 +34,25 @@ public class EmployeeIterator implements ListIterator<Employee> {
     public void resetIterator() {
         this.index = 0;
     }
+
+
+    public double calculateAverageAge() {
+        if (employeeList.isEmpty()) {
+            return 0;
+        }
+
+        int totalAge = 0;
+        int count = 0;
+
+        resetIterator();
+
+        while (hasMoreElement()) {
+            Employee emp = getNextElement();
+            totalAge += emp.getAge();
+            count++;
+        }
+
+        resetIterator();
+        return (double) totalAge / count;
+    }
 }

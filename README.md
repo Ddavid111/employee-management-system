@@ -8,16 +8,20 @@ A rendszer képes a dolgozók adatait **fájlba menteni, onnan visszaolvasni**, 
 
 A kód Java nyelven készült, és több **programtervezési mintát** is alkalmaz a kód strukturáltsága és bővíthetősége érdekében.
 
-Alkalmazott tervezési minták
+---
 
-### Factory Method
+## Alkalmazott tervezési minták
+
+### Factory Method  
 Az új dolgozók létrehozásáért felel.  
 A `EmployeeFactoryImpl` dönti el, hogy `ITEmployee` vagy `UniEmployee` példányt kell létrehozni a megadott munkahely alapján.
 
-### Iterator
-A dolgozók listájának bejárásához.  
-Az `EmployeeIterator` segítségével egységesen lehet végigmenni a dolgozókon, függetlenül azok típusától.
+### Iterator (Analyzer Iterator)  
+A dolgozók listájának bejárásához és feldolgozásához.  
+Az `EmployeeIterator` nemcsak bejárja a dolgozók listáját, hanem **átlagéletkort is számol** az adott csoportban.
 
-### Facade
-A fájlműveletek (beolvasás és írás) egyszerűsített kezeléséhez.  
-Az `EmployeeFileService` biztosítja, hogy a fájlkezelés logikája el legyen rejtve a főprogram elől, így az `App` osztályból könnyen használható.
+### Proxy  
+A fájlműveletek (beolvasás, írás) kezelését végzi és **naplózza** a műveleteket.  
+A `FileServiceProxy` továbbítja a kéréseket a valódi `EmployeeFileService` felé, miközben kijelzi például, hány dolgozó adatát írta vagy olvasta be.
+
+---

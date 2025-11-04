@@ -16,6 +16,7 @@ class EmployeeFactoryImpl
 
 interface FileService
 class EmployeeFileService
+class FileServiceProxy
 
 interface ListIterator
 class EmployeeIterator
@@ -35,13 +36,15 @@ EmployeeFactory <|.. EmployeeFactoryImpl
 EmployeeFactoryImpl ..> Employee
 
 FileService <|.. EmployeeFileService
+FileService <|.. FileServiceProxy
+FileServiceProxy --> EmployeeFileService
 EmployeeFileService --> Employee
 
 ListIterator <|.. EmployeeIterator
 EmployeeIterator --> Employee
 
 App --> EmployeeFactoryImpl
-App --> EmployeeFileService
+App --> FileServiceProxy
 App --> EmployeeIterator
 App --> Employee
 @enduml
