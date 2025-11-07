@@ -35,7 +35,7 @@ public class App {
             System.out.println(employeeIterator.getNextElement());
         }
 
-        double avgITAge = employeeIterator.calculateAverageAge();
+        double avgITAge = EmployeeAggregator.calculateAverageAge(employeeIterator);
         System.out.println("Average age of IT employees: " + avgITAge);
 
         System.out.println("\n");
@@ -53,7 +53,7 @@ public class App {
 
         System.out.println("\n");
 
-        double avgUniAge = employeeIterator1.calculateAverageAge();
+        double avgUniAge = EmployeeAggregator.calculateAverageAge(employeeIterator1);
         System.out.println("Average age of university employees: " + avgUniAge);
 
         List<Employee> employees = new ArrayList<>();
