@@ -37,7 +37,7 @@ EmployeeFactoryImpl ..> Employee
 
 FileService <|.. EmployeeFileService
 FileService <|.. FileServiceProxy
-FileServiceProxy --> EmployeeFileService
+FileServiceProxy o-- EmployeeFileService
 EmployeeFileService --> Employee
 
 ListIterator <|.. EmployeeIterator

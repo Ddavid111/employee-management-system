@@ -106,7 +106,7 @@ class FileServiceProxy {
 
 FileService <|.. EmployeeFileService
 FileService <|.. FileServiceProxy
-FileServiceProxy --> EmployeeFileService
+FileServiceProxy o-- EmployeeFileService
 EmployeeFileService --> Employee
 
 ' ====== Iterator Pattern (Analyzer Iterator) ======
