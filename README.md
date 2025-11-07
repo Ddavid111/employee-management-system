@@ -16,12 +16,21 @@ A kód Java nyelven készült, és több **programtervezési mintát** is alkalm
 Az új dolgozók létrehozásáért felel.  
 A `EmployeeFactoryImpl` dönti el, hogy `ITEmployee` vagy `UniEmployee` példányt kell létrehozni a megadott munkahely alapján.
 
-### Iterator (Analyzer Iterator)  
-A dolgozók listájának bejárásához és feldolgozásához.  
-Az `EmployeeIterator` nemcsak bejárja a dolgozók listáját, hanem **átlagéletkort is számol** az adott csoportban.
+---
+
+### Iterator  
+A dolgozók listájának **bejárásához** használatos.  
+Az `EmployeeIterator` kizárólag a bejárást valósítja meg, és az `ListIterator` interfészen keresztül függetleníti a bejárási logikát a konkrét tárolótól.  
+Az aggregáló műveletek — például az **átlagéletkor számítása** — külön komponensben, az `EmployeeAggregator` osztályban valósulnak meg, amely az iterátort használja az adatok feldolgozásához.
+
+Ezáltal az algoritmusok **függetlenek az adatszerkezettől**, és más bejáróval vagy más típusú kollekcióval is működhetnek.
+
+---
 
 ### Proxy  
 A fájlműveletek (beolvasás, írás) kezelését végzi és **naplózza** a műveleteket.  
-A `FileServiceProxy` továbbítja a kéréseket a valódi `EmployeeFileService` felé, miközben kijelzi például, hány dolgozó adatát írta vagy olvasta be.
+A `FileServiceProxy` továbbítja a kéréseket a valódi `EmployeeFileService` felé, miközben ellenőrzéseket és naplózást végez a műveletek előtt és után.
+
+Ez a megoldás jól szemlélteti, hogyan egészíthető ki egy meglévő szolgáltatás új viselkedéssel a **Proxy minta** segítségével, anélkül, hogy módosítanánk az eredeti osztály kódját.
 
 ---
